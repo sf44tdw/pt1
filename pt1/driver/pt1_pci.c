@@ -404,13 +404,15 @@ static int pt1_release(struct inode *inode, struct file *file)
 		channel->req_dma = FALSE ;
 		wake_up(&channel->ptr->dma_wait_q);
 	}
-	mutex_unlock(&channel->ptr->lock);
 
 	/* send tuner to sleep */
 	set_sleepmode(channel->ptr->regs, &channel->lock,
 				  channel->address, channel->type, TYPE_SLEEP);
 	schedule_timeout_interruptible(msecs_to_jiffies(100));
-
+	
+	//PT2ドライババグの注意喚起に従い修正
+	//https://gist.github.com/akimasa/a2fc1fc098dee1e27ab88fab3ff27d23
+	mutex_unlock(&channel->ptr->lock);
 	return 0;
 }
 
