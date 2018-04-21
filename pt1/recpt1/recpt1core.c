@@ -9,12 +9,12 @@
 
 /* globals */
 boolean f_exit = FALSE;
-char  bs_channel_buf[8];
+char  bs_channel_buf[20];
 ISDB_T_FREQ_CONV_TABLE isdb_t_conv_set = { 0, CHTYPE_SATELLITE, 0, bs_channel_buf };
 
 
 #if 0
-/* lookup frequency conversion table*/
+/* lookup frequency conversion table */
 ISDB_T_FREQ_CONV_TABLE *
 searchrecoff(char *channel)
 {
@@ -31,14 +31,13 @@ searchrecoff(char *channel)
     }
     return NULL;
 }
-#endif
-
-/* lookup frequency conversion table*/
+#else
+/* lookup frequency conversion table */
 ISDB_T_FREQ_CONV_TABLE *
 searchrecoff(char *channel)
 {
     int lp;
-
+    printf("channel = %s\n", channel);
     if(channel[0] == 'B' && channel[1] == 'S') {
         int node = 0;
         int slot = 0;
@@ -73,6 +72,7 @@ searchrecoff(char *channel)
     }
     return NULL;
 }
+#endif
 
 int
 close_tuner(thread_data *tdata)
