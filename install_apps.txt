@@ -1,11 +1,11 @@
 #端末にコピペして実行するとdkmsありでインストールする。
 
 
-VERSION="pt1-17b4f7b5dccb";\
+VERSION="17b4f7b5dccb";\
 dkms remove -m pt1 -v ${VERSION} --all ;\
 cd ;\
 rm -rf pt1 ;\
-rm -rf /usr/src/pt1-${VERSION} ;\
+rm -rf /usr/src/pt1-* ;\
 cd && git clone https://github.com/sf44tdw/pt1.git &&\
 cd pt1 && cd pt1 && cp -f -r -p driver /usr/src &&\
 cd /usr/src &&\
