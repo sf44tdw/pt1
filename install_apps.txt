@@ -1,7 +1,7 @@
 #端末にコピペして実行するとdkmsありでインストールする。
 
 
-VERSION="1";\
+VERSION="pt1-17b4f7b5dccb";\
 dkms remove -m pt1 -v ${VERSION} --all ;\
 cd ;\
 rm -rf pt1 ;\
