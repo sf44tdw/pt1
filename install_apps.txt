@@ -1,11 +1,11 @@
 #端末にコピペして実行するとdkmsありでインストールする。
 
-
 VERSION="17b4f7b5dccb";\
-dkms remove -m pt1 -v ${VERSION} --all ;\
+CURRENT_VERSION=$(dkms status -m pt1 | grep pt1 | cut -f 2 -d ','| sed s/^\s*\-//g) &&\
+dkms remove -m pt1/${CURRENT_VERSION} --all && rmmod pt1_drv &&\
 cd ;\
 rm -rf pt1 ;\
-rm -rf /usr/src/pt1-* ;\
+rm -rf "/usr/src/pt1*${CURRENT_VERSION}" ;\
 cd && git clone https://github.com/sf44tdw/pt1.git &&\
 cd pt1 && cd pt1 && cp -f -r -p driver /usr/src &&\
 cd /usr/src &&\
@@ -28,6 +28,6 @@ dkms install -m pt1 -v ${VERSION} &&\
 cd &&\
 cd pt1 &&\
 cd pt1 &&\
-cd recpt1 ;\
-chmod u+x autogen.sh
+cd recpt1 &&\
+chmod u+x autogen.sh &&\
 make uninstall;make clean; ./autogen.sh && ./configure --enable-b25 && make && make install
