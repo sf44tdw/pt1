@@ -26,6 +26,6 @@ dkms add -m pt1 -v ${VERSION} &&\
 dkms build -m pt1 -v ${VERSION} &&\
 dkms install -m pt1 -v ${VERSION} &&\
 cd &&\
-cd pt1-${VERSION} &&\
-cd pt1-${VERSION} &&\
+cd pt1 &&\
+cd pt1 &&\
 cd recpt1 ;make uninstall;make clean; ./autogen.sh && ./configure --enable-b25 && make && make install
