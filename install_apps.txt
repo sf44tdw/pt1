@@ -28,4 +28,6 @@ dkms install -m pt1 -v ${VERSION} &&\
 cd &&\
 cd pt1 &&\
 cd pt1 &&\
-cd recpt1 ;make uninstall;make clean; ./autogen.sh && ./configure --enable-b25 && make && make install
+cd recpt1 ;\
+chmod u+x autogen.sh
+make uninstall;make clean; ./autogen.sh && ./configure --enable-b25 && make && make install
