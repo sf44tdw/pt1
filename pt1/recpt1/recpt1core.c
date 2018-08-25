@@ -37,7 +37,7 @@ ISDB_T_FREQ_CONV_TABLE *
 searchrecoff(char *channel)
 {
     int lp;
-    printf("channel = %s\n", channel);
+    //printf("channel = %s\n", channel);
     if(channel[0] == 'B' && channel[1] == 'S') {
         int node = 0;
         int slot = 0;
