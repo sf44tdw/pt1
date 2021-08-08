@@ -1,10 +1,17 @@
+
+
+#ドライバのアンインストールとソースの削除を全部まとめてやる。
+CURRENT_VERSION=$(dkms status -m pt1 | grep pt1 | cut -f 2 -d ','| sed s/^\s*\-//g) &&\
+rm -rf "/usr/src/pt1*${CURRENT_VERSION}" ;\
+dkms remove -m pt1 -v ${CURRENT_VERSION} --all && dkms uninstall pt1 -v ${CURRENT_VERSION} --all
+
+
+
+
 #端末にコピペして実行するとdkmsありでインストールする。
 VERSION="17b4f7b5dccb-mod-20210808";\
-CURRENT_VERSION=$(dkms status -m pt1 | grep pt1 | cut -f 2 -d ','| sed s/^\s*\-//g) &&\
-dkms remove -m pt1/${CURRENT_VERSION} --all && rmmod pt1_drv &&\
 cd ;\
 rm -rf pt1 ;\
-rm -rf "/usr/src/pt1*${CURRENT_VERSION}" ;\
 cd && git clone https://github.com/sf44tdw/pt1.git &&\
 cd pt1 && cd pt1 && cp -f -r -p driver /usr/src &&\
 cd /usr/src &&\
