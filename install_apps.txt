@@ -1,5 +1,4 @@
 #端末にコピペして実行するとdkmsありでインストールする。
-
 VERSION="17b4f7b5dccb-mod-20210808";\
 CURRENT_VERSION=$(dkms status -m pt1 | grep pt1 | cut -f 2 -d ','| sed s/^\s*\-//g) &&\
 dkms remove -m pt1/${CURRENT_VERSION} --all && rmmod pt1_drv &&\
@@ -31,3 +30,15 @@ cd pt1 &&\
 cd recpt1 &&\
 chmod u+x autogen.sh &&\
 make uninstall;make clean; ./autogen.sh && ./configure --enable-b25 && make && make install
+
+#モジュール一覧
+dkms status
+
+#ドライバ削除
+dkms uninstall pt1 -v <VERSION> --all
+
+#モジュール削除
+dkms remove -m pt1 -v <VERSION> --all
+
+#ソースコード削除
+rm -rf "/usr/src/pt1*<VERSION>"
