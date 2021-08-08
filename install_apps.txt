@@ -2,9 +2,8 @@
 
 #ドライバのアンインストールとソースの削除を全部まとめてやる。
 CURRENT_VERSION=$(dkms status -m pt1 | grep pt1 | cut -f 2 -d ','| sed s/^\s*\-//g) &&\
-rm -rf "/usr/src/pt1*${CURRENT_VERSION}" ;\
-dkms remove -m pt1 -v ${CURRENT_VERSION} --all && dkms uninstall pt1 -v ${CURRENT_VERSION} --all
-
+dkms remove -m pt1 -v ${CURRENT_VERSION} --all && dkms uninstall pt1 -v ${CURRENT_VERSION} --all ;\
+rm -rf "/usr/src/pt1*${CURRENT_VERSION}"
 
 
 
