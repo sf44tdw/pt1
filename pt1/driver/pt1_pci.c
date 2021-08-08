@@ -11,6 +11,11 @@
 #include <linux/interrupt.h>
 #include <linux/version.h>
 #include <linux/mutex.h>
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,2,0)
+#include <linux/vmalloc.h>
+#endif
+
 #include <linux/uaccess.h>
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,4,0)
